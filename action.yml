@@ -1,0 +1,17 @@
+name: 'Cherry Picks commit id to target branch'
+description: 'Commits, pushes a new PR branch and creates PR for the commits.'
+author: '@Subramanian-R-Needl'
+inputs:
+  pr_branch:
+    description: 'Target Branch to create PR'
+    required: true
+  pr_labels:
+    description: 'Labels for the new PR'
+    required: false
+    default: 'autocreated'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+branding:
+  icon: git-merge
+  color: yellow

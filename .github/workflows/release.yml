@@ -1,0 +1,21 @@
+name: PR for release branch
+on:
+  push:
+    branches:
+      - prod
+      - stage
+jobs:
+  release_pull_request:
+    runs-on: ubuntu-latest
+    name: release_pull_request
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3
+    - name: Create PR to branch
+      uses: Subramanian-R-Needl/cherry-pick-commit@main
+      with:
+        pr_branch: 'master'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITBOT_EMAIL: dev.ops@needl.ai
+        DRY_RUN: false
