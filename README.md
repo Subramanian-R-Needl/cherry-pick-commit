@@ -23,7 +23,7 @@ Required The branch name of on which PR should be created from the cherry-pick c
 CSV Labels to apply on the PR created. Default: autocreated
 
 ## **Example usage**
-In this example, all the merges to the branch 0.1.0 will create a PR on 0.1.X branch too.
+In this example, all the merges to the branch prod/stage will create a PR on master branch too.
 
 ```markdown
 name: PR for release branch
