@@ -9,6 +9,9 @@ inputs:
     description: 'Labels for the new PR'
     required: false
     default: 'autocreated'
+  pr_author:
+    description: 'Creator of the PR'
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
