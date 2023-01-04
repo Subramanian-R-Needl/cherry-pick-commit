@@ -38,7 +38,7 @@ jobs:
     name: release_pull_request
     steps:
     - name: checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v3
     - name: Create PR to branch
       uses: Subramanian-R-Needl/cherry-pick-commit@main
       with:
