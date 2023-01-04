@@ -16,7 +16,7 @@ PR title will be prefixed with AUTO
 If base branch commit contains AUTO, it wont recreate the PR.
 
 ## **Inputs**
-### # pr_branch
+### pr_branch
 Required The branch name of on which PR should be created from the cherry-pick commit.
 
 ### pr_labels
@@ -25,7 +25,8 @@ CSV Labels to apply on the PR created. Default: autocreated
 ## **Example usage**
 In this example, all the merges to the branch 0.1.0 will create a PR on 0.1.X branch too.
 
-`name: PR for release branch
+```markdown
+name: PR for release branch
 on:
   push:
     branches:
@@ -46,4 +47,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GITBOT_EMAIL: <BOT_EMAIL>
         DRY_RUN: false
-`
+```
