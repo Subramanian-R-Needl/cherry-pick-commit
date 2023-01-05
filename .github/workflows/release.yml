@@ -20,3 +20,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GITBOT_EMAIL: dev.ops@needl.ai
         DRY_RUN: false
+        GIT_LFS_SKIP_SMUDGE: 1
