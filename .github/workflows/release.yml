@@ -4,6 +4,7 @@ on:
     branches:
       - prod
       - stage
+      - Subramanian-R-Needl/autopr
 jobs:
   release_pull_request:
     runs-on: ubuntu-latest
@@ -12,7 +13,7 @@ jobs:
     - name: checkout
       uses: actions/checkout@v3
     - name: Create PR to branch
-      uses: Subramanian-R-Needl/cherry-pick-commit@main
+      uses: gorillio/cherry-pick@master
       with:
         pr_branch: 'master'
       env:
