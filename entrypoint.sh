@@ -42,6 +42,6 @@ git_cmd git fetch --all
 git_cmd git checkout "${INPUT_PR_BRANCH}"
 git_cmd git checkout -b "${PR_BRANCH}" origin/"${INPUT_PR_BRANCH}"
 # git_cmd git cherry-pick "${GITHUB_SHA}"
-git_cmd checkout "${PR_BRANCH}" ${GIT_CHANGED_FILES}
+git_cmd checkout origin/"${INPUT_PR_BRANCH}" ${GIT_CHANGED_FILES}
 git_cmd git push -u origin "${PR_BRANCH}"
 git_cmd hub pull-request -b "${INPUT_PR_BRANCH}" -h "${PR_BRANCH}" -l "${INPUT_PR_LABELS}" -a "${GITHUB_ACTOR}" -m "\"AUTO PR: ${PR_TITLE}\""
