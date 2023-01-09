@@ -36,7 +36,7 @@ fi
 
 # PR_TITLE=$(git log -1 --format="%s" $GITHUB_SHA)
 GIT_CHANGED_BRANCH=$(git name-rev $GITHUB_SHA | cut -d' ' -f 2)
-GIT_CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r $GITHUB_SHA)
+GIT_CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r $GITHUB_SHA --)
 
 git_cmd git remote update
 git_cmd git fetch --all
