@@ -43,9 +43,10 @@ git_cmd git fetch --all
 git_cmd git checkout "${INPUT_PR_BRANCH}"
 git_cmd git checkout -b "${PR_BRANCH}" origin/"${INPUT_PR_BRANCH}"
 # git_cmd git cherry-pick "${GITHUB_SHA}"
-echo $GIT_CHANGED_BRANCH
-echo $GIT_CHANGED_FILES
-git_cmd git checkout origin/"${GIT_CHANGED_BRANCH}" ${GIT_CHANGED_FILES}
+# echo $GIT_CHANGED_BRANCH
+# echo $GIT_CHANGED_FILES
+# git_cmd git checkout origin/"${GIT_CHANGED_BRANCH}" ${GIT_CHANGED_FILES}
+git_cmd git merge $GIT_CHANGED_BRANCH
 git_cmd git add -u
 git_cmd git commit -m "Updated files"
 git_cmd git push -u origin "${PR_BRANCH}"
