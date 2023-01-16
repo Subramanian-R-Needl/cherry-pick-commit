@@ -40,14 +40,17 @@ GIT_CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r $GITHUB_SHA --)
 
 git_cmd git remote update
 git_cmd git fetch --all
+# git_cmd git checkout "${INPUT_PR_BRANCH}"
+git_cmd git checkout -b "${PR_BRANCH}" origin/"${GIT_CHANGED_BRANCH}"
+git_cmd hub pull-request -b "${INPUT_PR_BRANCH}" -h "${PR_BRANCH}" -l "${INPUT_PR_LABELS}" -a "${GITHUB_ACTOR}" -m "AUTO PR FOR: \"${GIT_CHANGED_BRANCH}\""
+# git_cmd git checkout -b "${PR_BRANCH}" origin/"${INPUT_PR_BRANCH}"
 git_cmd git checkout "${INPUT_PR_BRANCH}"
-git_cmd git checkout -b "${PR_BRANCH}" origin/"${INPUT_PR_BRANCH}"
-git_cmd git cherry-pick "${GITHUB_SHA}"
+# git_cmd git cherry-pick "${GITHUB_SHA}"
 # echo $GIT_CHANGED_BRANCH
 # echo $GIT_CHANGED_FILES
 # git_cmd git checkout origin/"${GIT_CHANGED_BRANCH}" ${GIT_CHANGED_FILES}
 # git_cmd git merge $GIT_CHANGED_BRANCH --allow-unrelated-histories
-git_cmd git add -u
-git_cmd git commit -am "Updated files" --allow-empty
-git_cmd git push -u origin "${PR_BRANCH}"
-git_cmd hub pull-request -b "${INPUT_PR_BRANCH}" -h "${PR_BRANCH}" -l "${INPUT_PR_LABELS}" -a "${GITHUB_ACTOR}" -m "AUTO PR FOR: \"${GIT_CHANGED_BRANCH}\""
+# git_cmd git add -u
+# git_cmd git commit -am "Updated files" --allow-empty
+git_cmd git push -u origin "${PR_BRANCH}" -f
+# git_cmd hub pull-request -b "${INPUT_PR_BRANCH}" -h "${PR_BRANCH}" -l "${INPUT_PR_LABELS}" -a "${GITHUB_ACTOR}" -m "AUTO PR FOR: \"${GIT_CHANGED_BRANCH}\""
