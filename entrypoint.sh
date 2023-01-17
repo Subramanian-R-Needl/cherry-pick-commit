@@ -27,7 +27,7 @@ git_cmd() {
 }
 
 SHORT_COMMIT_ID=$(echo $GITHUB_SHA | cut -c -7)
-PR_BRANCH="$GITHUB_ACTOR/auto-$INPUT_PR_BRANCH-$SHORT_COMMIT_ID"
+PR_BRANCH="github-actions[bot]/$GITHUB_ACTOR/$INPUT_PR_BRANCH-$SHORT_COMMIT_ID"
 MESSAGE=$(git log -1 $GITHUB_SHA | grep "AUTO" | wc -l)
 
 if [[ $MESSAGE -gt 0 ]]; then
