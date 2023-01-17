@@ -26,6 +26,7 @@ git_cmd() {
   fi
 }
 
+SHORT_COMMIT_ID=$(echo $GITHUB_SHA | cut -c -7)
 PR_BRANCH="$GITHUB_ACTOR/auto-$INPUT_PR_BRANCH-$GITHUB_SHA"
 MESSAGE=$(git log -1 $GITHUB_SHA | grep "AUTO" | wc -l)
 
@@ -37,11 +38,14 @@ fi
 # PR_TITLE=$(git log -1 --format="%s" $GITHUB_SHA)
 GIT_CHANGED_BRANCH=$(git name-rev $GITHUB_SHA | cut -d' ' -f 2)
 GIT_CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r $GITHUB_SHA --)
+echo $GIT_CHANGED_BRANCH
+echo $GIT_CHANGED_FILES
 
 git_cmd git remote update
 git_cmd git fetch --all
 # git_cmd git checkout "${INPUT_PR_BRANCH}"
 git_cmd git checkout -b "${PR_BRANCH}" origin/"${GIT_CHANGED_BRANCH}"
+git_cmd git push -u origin "${PR_BRANCH}"
 git_cmd hub pull-request -b "${INPUT_PR_BRANCH}" -h "${PR_BRANCH}" -l "${INPUT_PR_LABELS}" -a "${GITHUB_ACTOR}" -m "AUTO PR FOR: \"${GIT_CHANGED_BRANCH}\""
 # git_cmd git checkout -b "${PR_BRANCH}" origin/"${INPUT_PR_BRANCH}"
 git_cmd git checkout "${INPUT_PR_BRANCH}"
