@@ -57,5 +57,5 @@ git_cmd git pull
 # git_cmd git merge $GIT_CHANGED_BRANCH --allow-unrelated-histories
 # git_cmd git add -u
 # git_cmd git commit -am "Updated files" --allow-empty
-git_cmd git push origin "${PR_BRANCH}" -f
+git_cmd git push origin "${INPUT_PR_BRANCH}":"${PR_BRANCH}" -f
 # git_cmd hub pull-request -b "${INPUT_PR_BRANCH}" -h "${PR_BRANCH}" -l "${INPUT_PR_LABELS}" -a "${GITHUB_ACTOR}" -m "AUTO PR FOR: \"${GIT_CHANGED_BRANCH}\""
